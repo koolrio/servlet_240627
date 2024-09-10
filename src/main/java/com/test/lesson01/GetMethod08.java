@@ -33,7 +33,13 @@ public class GetMethod08 extends HttpServlet {
 		for(int i = 0; i <list.size(); i++) {
 			String text = list.get(i);
 			if (text.contains(search)) {
-				out.print(text +"<br>");
+				//맛집 -> <b>맛집</b>
+				//1) 
+				//text = text.replace(search, "<b>" + search + "</b>");
+				
+				// 2)
+				String[] words = text.split(search); 
+				out.print(words[0] +"<b>"+ search +"</b>" + words[1] + "<br>");
 			}
 		}
 		
