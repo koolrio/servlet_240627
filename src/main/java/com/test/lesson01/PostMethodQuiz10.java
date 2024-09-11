@@ -33,19 +33,6 @@ public class PostMethodQuiz10 extends HttpServlet {
 		}
 		out.print("</body></html>");
 		
-//		Set<String> keySet = userMap.keySet();
-//		Iterator<String> keyIterator = keySet.iterator();
-//		while(keyIterator.hasNext()) {
-//			String key = keyIterator.next();
-//			String value = userMap.get(key);
-//			if(key == id && value != id) {
-//				System.out.println("id가 일치하지 않습니다.");
-//			} else if(key == password && value != password) {
-//				System.out.println("password가 일치하지 않습니다.");
-//			} else {
-//				System.out.println();
-//			}
-//		}
 		
 	}
 	private final Map<String, String> userMap =  new HashMap<String, String>() {
