@@ -25,30 +25,22 @@
 				</tr>				
 			</thead>
 			<tbody>
+				<%
+					List<String> goodsList = Arrays.asList(new String[]{"저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"});				
+				
+					for(int i = 0; i < goodsList.size(); i++){
+											
+				%>
 				<tr>
-					<td></td>
-					<td></td>
+					<td><%= i+1%></td>
+					<td><%= goodsList.get(i) %></td>
 				</tr>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
-		<%		
-				List<String> goodsList = Arrays.asList(new String[]{"저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"});
-		%>
-		<%
-			int number = 1;
-		%>
-		<tr>
-			<th>
-				<%
-				number++;			
-				%>
-			</th>
-			<td>
 
-			</td>
-		</tr>
-			
-		%>
 	</div>
 </body>
 </html>
