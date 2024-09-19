@@ -1,14 +1,14 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>북문고</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
@@ -61,34 +61,34 @@ map = new HashMap<String, Object>() {
 };
 list.add(map);
 %>
-	<div class="container">
-		<h1 class="text-center">책목록</h1>
-		<table class="table text-center">
-			<thead class="text-center">
-				<tr>
-					<th>id</th>
-					<th>표지</th>
-					<th>제목</th>
-				</tr>
-			</thead>
-			<tbody class="text-center">
-			<%
-				for (Map<String, Object> book: list){
-					
-				
-			%>
-				<tr>
-					<td><%= book.get("id") %></td>
-					<td><img src="<%= book.get("image") %>" alt="책표지" width="50"></td>
-					<td><a href="/lesson02/quiz08_1.jsp?id=<%= book.get("id") %>"><%= book.get("title") %></a></td>
-			
-				</tr>
-			<%
-				}
-			%>
-					
-			</tbody>
-		</table>
+
+<%
+	int id = Integer.parseInt(request.getParameter("id"));
+	Map<String, Object> target = null;
+	
+	for(Map<String, Object> book: list){
+		if((int)book.get("id")==id){
+			target = book;
+			break;
+		}
+	}
+	if(target!=null){
+%>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<img src = "<%= target.get("image") %>" alt="book cover" width="300">
+		</div>
+		<div class="col-md-8">
+			<p class="display-3 text-bold"><%= target.get("title") %></p>
+			<h2 class="text-info"><%= target.get("author") %></h2>
+			<h2 class="text-secondary"><%= target.get("publisher") %></h2>
+		</div>
 	</div>
+</div>
+<%
+}
+%>
 </body>
 </html>

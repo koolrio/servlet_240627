@@ -67,12 +67,32 @@ list.add(map);
 		}
 	}
 	
-	out.print(target);
+	if(target != null){
+
 	%>
 	<div class="container">
 		<div class="d-flex">
-			<div></div>
-			<div></div>
+			<div class="d-flex">
+				<table>
+					<tr>
+						<th>
+							<img src="<%=target.get("image") %>" alt="book cover" width="200"> 									
+						</th>
+						<th>
+							<h3>Title<%= target.get("title") %></h3><br>
+						</th>
+						<th>
+							<h3>Author<%= target.get("author") %></h3><br>
+						</th>
+						<th>
+							<h3>Publisher<%= target.get("publisher") %></h3><br>
+						</th>
+					</tr>
+					<%
+	}	
+					%>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>
