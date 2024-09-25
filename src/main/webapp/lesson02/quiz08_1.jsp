@@ -9,6 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>교보문고</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <%
@@ -58,41 +62,29 @@ map = new HashMap<String, Object>() {
 list.add(map);
 %>
 	<%
-	int id = Integer.parseInt(request.getParameter("id"));
+
+	int id = Integer.valueOf(request.getParameter("id"));
 	Map<String, Object> target = null;
-	for(Map<String, Object> book: list){
-		if((int)book.get("id") == id){
+	for (Map<String, Object> book: list){
+		if((int)book.get("id")==id) {
 			target = book;
 			break;
 		}
 	}
 	
-	if(target != null){
 
 	%>
 	<div class="container">
 		<div class="d-flex">
-			<div class="d-flex">
-				<table>
-					<tr>
-						<th>
-							<img src="<%=target.get("image") %>" alt="book cover" width="200"> 									
-						</th>
-						<th>
-							<h3>Title<%= target.get("title") %></h3><br>
-						</th>
-						<th>
-							<h3>Author<%= target.get("author") %></h3><br>
-						</th>
-						<th>
-							<h3>Publisher<%= target.get("publisher") %></h3><br>
-						</th>
-					</tr>
-					<%
-	}	
-					%>
-				</table>
+			<div>
+				<img src = "<%= target.get("image") %>" alt="book cover" width="300">
 			</div>
+			<div>
+				<div class="display-1 font-weight-bold"><%=target.get("title") %></div>
+				<span class="display-3 text-info d-block"><%= target.get("author") %></span>
+				<span class="display-3 text-secondary d-block"><%= target.get("publisher") %></span>
+			</div>
+
 		</div>
 	</div>
 </body>

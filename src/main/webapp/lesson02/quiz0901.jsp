@@ -1,4 +1,4 @@
-<%@page import="java.util.Iterator"%>
+	<%@page import="java.util.Iterator"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
@@ -14,11 +14,11 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <style>
-a, a:hover {color:#fff;}
-header {height: 70px;}
+a, a:hover {color:#fff;} 
+header {height: 80px;}
 nav {height: 50px;}
 .contents {min-height: 500px;}
-footer {height: 30px;}
+footer {height: 50px;}
 </style>
 </head>
 <body>
@@ -64,50 +64,53 @@ footer {height: 30px;}
 
 	<div id="wrap" class="container">
 		<header class="d-flex justify-content-center align-items-center">
-			<h2 class="text-danger font-weight-bold">SK Broadband IPTV</h2>
+			<h2 class="text-danger font-weight-bold">SK Broadband IPTV</h2>		
 		</header>
-			<nav class="bg-danger d-flex text-white align-items-center">
-				<ul class = "nav nav-fill w-100">
-					<li class="nav-item"><a href="/lesson02/quiz09.jsp" class="nav-link">전체</a></li>
-					<li class="nav-item"><a href="/lesson02/quiz09.jsp?category=지상파" class="nav-link">지상파</a></li>
-					<li class="nav-item"><a href="/lesson02/quiz09.jsp?category=영화" class="nav-link">영화</a></li>
-					<li class="nav-item"><a href="/lesson02/quiz09.jsp?category=드라마" class="nav-link">드라마</a></li>
-					<li class="nav-item"><a href="/lesson02/quiz09.jsp?category=예능" class="nav-link">예능</a></li>
-					<li class="nav-item"><a href="/lesson02/quiz09.jsp?category=스포츠" class="nav-link">스포츠</a></li>			
-				</ul>
-			</nav>
-			<section class = "contents">
-				<table class="table text-center">
-					<thead>
-						<tr>
-							<th>Channel</th>
-							<th>Channel Name</th>
-							<th>Category</th>
-						</tr>
-					</thead>
-					<tbody>
-					<%
-						String category = request.getParameter("category");
-						for(Map<String, String> channel: list){
-							
-								if(category == null || channel.get("category").equals(category)) {
+		<nav class="bg-danger d-flex align-items-center">
+			<ul class="nav nav-fill w-100">
+				<li class="nav-item"><a href="/lesson02/quiz0901.jsp" class="nav-link text-white">전체</a></li>
+				<li class="nav-item"><a href="/lesson02/quiz0901.jsp?category=지상파" class="nav-link text-white">지상파</a></li>
+				<li class="nav-item"><a href="/lesson02/quiz0901.jsp?category=드라마" class="nav-link text-white">드라마</a></li>
+				<li class="nav-item"><a href="/lesson02/quiz0901.jsp?category=예능" class="nav-link text-white">예능</a></li>
+				<li class="nav-item"><a href="/lesson02/quiz0901.jsp?category=영화" class="nav-link text-white">영화</a></li>
+				<li class="nav-item"><a href="/lesson02/quiz0901.jsp?category=스포츠" class="nav-link text-white">스포츠</a></li>
+			</ul>
+		</nav>
+		<section class="contents">
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<th>Channel</th>
+						<th>Channel Name</th>
+						<th>Category</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%
+				
+					String category = request.getParameter("category");
+					for(Map<String, String> item: list){
 						
-					%>
-						<tr>
-							<td><%= channel.get("ch") %></td>
-							<td><%= channel.get("name") %></td>
-							<td><%= channel.get("category") %></td>
-						</tr>
-					<%
-							}
-					}
-					%>
-					</tbody>
-				</table>
-			</section>
-			<footer class="d-flex justify-content-center align-items-center">
-				<small>Copyright © SK Broadband IPTV</small>
-			</footer>
+						if(category == null || category.equals(item.get("category"))) {
+							
+						
+				%>
+					<tr>
+						<td><%= item.get("ch") %></td>
+						<td><%= item.get("name") %></td>
+						<td><%= item.get("category") %></td>
+					</tr>
+					
+				<%
+					}		
+				}
+				%>
+				</tbody>
+			</table>
+		</section>
+		<footer class="d-flex justify-content-center align-items-center"> 
+			<small>Copyright © SK Broadband IPTV</small>
+		</footer>
 	</div>
 </body>
 </html>

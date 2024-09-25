@@ -62,31 +62,28 @@ map = new HashMap<String, Object>() {
 list.add(map);
 %>
 	<div class="container">
-		<h1 class="text-center">책목록</h1>
+		<h1 class="text-center">Book List</h1>
 		<table class="table text-center">
-			<thead class="text-center">
+			<thead>
 				<tr>
 					<th>id</th>
-					<th>표지</th>
-					<th>제목</th>
+					<th>Book cover</th>
+					<th>Book title</th>
 				</tr>
 			</thead>
-			<tbody class="text-center">
-			<%
+			<tbody>
+				<%
 				for (Map<String, Object> book: list){
 					
-				
-			%>
+				%>
 				<tr>
 					<td><%= book.get("id") %></td>
-					<td><img src="<%= book.get("image") %>" alt="책표지" width="50"></td>
+					<td><img src= "<%= book.get("image") %>" alt="book cover" width="50"></td>
 					<td><a href="/lesson02/quiz08_1.jsp?id=<%= book.get("id") %>"><%= book.get("title") %></a></td>
-			
-				</tr>
-			<%
-				}
-			%>
-					
+				</tr>					
+				<%
+				}				
+				%>
 			</tbody>
 		</table>
 	</div>

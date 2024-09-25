@@ -12,7 +12,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
+<style>
+a, a:hover {color: #fff;}
+header {height: 80px;}
+nav {height: 50px;}
+.contents {min-height: 500px;}
+footer {height: 30px;}
+</style>
 </head>
 <body>
 <%
@@ -55,36 +61,47 @@
     list.add(map);
 %>
 
-<div class="container">
-	<h1 class="text-danger text-center">SK Broadband IPTV</h1>
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>Channel</th>
-				<th>Channel Name</th>
-				<th>Category</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<%
-					String category = request.getParameter("category");
-					for(Map<String, String> channel: list){
-						if(channel.get("category").equals(category)){
-				%>
-							<td><%= channel.get("ch") %></td>
-							<td><%= channel.get("name") %></td>
-							<td><%= channel.get("category") %></td><br>
-				<%
-						continue;
+<div id="wrap" class="container">
+	<header class="d-flex justify-content-center align-items-center">
+		<h2 class="text-danger font-weight-bold">SK Broadband IPTV</h2>
+	</header>
+	<nav class="bg-danger d-flex align-items-center">
+		<ul class="nav nav-fill w-100">
+			<li class="nav-item"><a href="/lesson02/quiz09_1.jsp" class="nav-link text-whit">전체</a></li>
+			<li class="nav-item"><a href="/lesson02/quiz09_1.jsp?category=예능" class="nav-link text-whit">예능</a></li>
+			<li class="nav-item"><a href="/lesson02/quiz09_1.jsp?category=스포츠" class="nav-link text-whit">스포츠</a></li>
+			<li class="nav-item"><a href="/lesson02/quiz09_1.jsp?category=드라마" class="nav-link text-whit">드라마</a></li>
+			<li class="nav-item"><a href="/lesson02/quiz09_1.jsp?category=영화" class="nav-link text-whit">영화</a></li>
+			<li class="nav-item"><a href="/lesson02/quiz09_1.jsp?category=지상파" class="nav-link text-whit">지상파</a></li>
+		</ul>
+	</nav>
+	<section class = "contents">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>Channel</th>
+					<th>Channel Name</th>
+					<th>Category</th>
+				</tr>
+			</thead>
+			<tbody>
+					<%
+						String category = request.getParameter("category");
+						for(Map<String, String> channel: list){
+							if(category == null || channel.get("category").equals(category)){
+					%>
+						<tr>
+										<td><%= channel.get("ch") %></td>
+										<td><%= channel.get("name") %></td>
+										<td><%= channel.get("category") %></td>
+						</tr>
+					<%
+							}					
 						}
-				
-					}
-				%>
-				
-			</tr>
-		</tbody>
-	</table>
+					%>					
+			</tbody>
+		</table>
+	</section>
 </div>
 </body>
 </html>

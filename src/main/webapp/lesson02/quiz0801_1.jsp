@@ -81,9 +81,9 @@ list.add(map);
 			<img src = "<%= target.get("image") %>" alt="book cover" width="300">
 		</div>
 		<div class="col-md-8">
-			<p class="display-3 text-bold"><%= target.get("title") %></p>
-			<h2 class="text-info"><%= target.get("author") %></h2>
-			<h2 class="text-secondary"><%= target.get("publisher") %></h2>
+			<p class="display-3 font-weight-bold"><%= target.get("title") %></p>
+			<h2 class="display-3 text-info"><%= target.get("author") %></h2>
+			<h2 class="display-4 text-secondary"><%= target.get("publisher") %></h2>
 		</div>
 	</div>
 </div>
